@@ -129,7 +129,7 @@
                     {% endif %}
 
                     <h2 class="bloglist-title">
-                        <a href="{{ post.permalink }}">{{ post.title }}</a>
+                        <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
                     </h2>
 
                     {% if post.taxonomies.tags %}
@@ -142,7 +142,7 @@
 
                     <div class="description">
                         {% if post.description %}
-                            <p>{{ post.description }}</p>
+                            <p>{{ post.description | markdown(inline=true) | safe }}</p>
                         {% elif post.summary %}
                             <p>{{ post.summary | striptags | trim_end_matches(pat=".") | safe }}…</p>
                         {% endif %}
